@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.scam_detection.entity.Scam;
-import com.example.scam_detection.service.ScamService;
+import com.example.scam_detection.service.TableService;
 
 @RestController
-@RequestMapping("/scam")
-public class ScamController {
+@RequestMapping("/table")
+public class TableController {
 
     @Autowired
-    private ScamService scamService;
+    private TableService tableService;
 
     @GetMapping("/all")
-    public List<Scam> getScams(){
-        return scamService.getScams();
+    public List<String> getTables(){
+        return tableService.getAllTableNames();
     }
+    
 }

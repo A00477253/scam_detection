@@ -7,18 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.scam_detection.entity.Scam;
-import com.example.scam_detection.service.ScamService;
+import com.example.scam_detection.entity.ScamCategory;
+import com.example.scam_detection.service.ScamCategoryService;
 
 @RestController
-@RequestMapping("/scam")
-public class ScamController {
+@RequestMapping("/scamcategory")
+public class ScamCategoryController {
 
     @Autowired
-    private ScamService scamService;
+    private ScamCategoryService scamCategoryService;
 
     @GetMapping("/all")
-    public List<Scam> getScams(){
-        return scamService.getScams();
+    public List<ScamCategory> getCategories(){
+        return scamCategoryService.getCategories();
     }
+    
 }
