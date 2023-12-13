@@ -1,8 +1,8 @@
 package com.example.scam_detection.entity;
 
-import lombok.*;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.sql.Timestamp;
 
@@ -24,7 +24,8 @@ public class CallRecord {
     @Column(name = "duration")
     private Timestamp duration;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "recordId", insertable = false, updatable = false)
     private Record record;
 

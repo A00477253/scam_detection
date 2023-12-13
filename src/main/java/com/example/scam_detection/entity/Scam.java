@@ -1,5 +1,6 @@
 package com.example.scam_detection.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import jakarta.persistence.*;
@@ -20,15 +21,20 @@ public class Scam {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "scammerId")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
     private Scammer scammer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
     private User user;
 
     private String lostResource;
 
     private LocalDateTime time;
-
-
 }
+
+
+

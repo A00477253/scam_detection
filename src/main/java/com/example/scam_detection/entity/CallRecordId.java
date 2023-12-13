@@ -24,3 +24,4 @@ public class CallRecordId implements Serializable {
     private String phoneNumber;
 
 }
+

@@ -1,5 +1,6 @@
 package com.example.scam_detection.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,7 +16,7 @@ import lombok.*;
 public class EmailRecord {
 
     @EmbeddedId
-    @Column(name="record_id")
+    @Column(name = "record_id")
     private EmailRecordId id;
 
     @Column(name = "content", length = 50)
@@ -23,6 +24,9 @@ public class EmailRecord {
 
     @ManyToOne
     @JoinColumn(name = "recordId", insertable = false, updatable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
     private Record record;
 
 }
+

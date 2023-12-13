@@ -31,3 +31,4 @@ public interface UserRepository extends JpaRepository<User,Integer> {
             "ELSE '60+' END")
     List<AgeDTO> findAgeAndRecordCount();
 }
+

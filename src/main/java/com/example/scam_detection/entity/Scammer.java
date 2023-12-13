@@ -1,10 +1,6 @@
 package com.example.scam_detection.entity;
 
-import lombok.*;
-
 import jakarta.persistence.*;
-
-
 import lombok.*;
 
 

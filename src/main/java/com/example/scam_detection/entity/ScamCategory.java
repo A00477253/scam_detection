@@ -21,4 +21,5 @@ public class ScamCategory {
     private String type;
 
     private String description;
+
 }
