@@ -16,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/scam")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ScamController {
 
     @Autowired

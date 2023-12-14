@@ -11,6 +11,7 @@ import com.example.scam_detection.service.RecordService;
 
 @RestController
 @RequestMapping("/record")
+@CrossOrigin(origins = "http://localhost:3000")
 public class RecordController {
 
     @Autowired
