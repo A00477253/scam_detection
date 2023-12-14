@@ -17,6 +17,7 @@ public class EmailRecord {
     @EmbeddedId
     private EmailRecordId id;
 
+    // TODO: increase varchar size to 255
     private String content;
 
     @ManyToOne

@@ -1,4 +1,4 @@
-INSERT INTO User (user_id, phone_number, email, age, name) VALUES 
+INSERT INTO user (user_id, phone_number, email, age, name) VALUES
 (101, '+111111111', 'user101@example.com', 25, 'John Doe'),
 (102, '+222222222', 'user102@example.com', 30, 'Jane Smith'),
 (103, '+333333333', 'user103@example.com', 28, 'Michael Johnson'),
