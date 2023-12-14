@@ -1,17 +1,27 @@
 package com.example.scam_detection.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.*;
+
 import java.io.Serializable;
 
-import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Embeddable
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@ToString
 public class CallRecordId implements Serializable {
+
+    @Column(name = "recordId")
+    private Long recordId;
+
+    @Column(name = "phone_number", length = 15)
     private String phoneNumber;
-    private Integer recordId;
+
 }
+

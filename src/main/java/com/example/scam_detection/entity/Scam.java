@@ -1,34 +1,40 @@
 package com.example.scam_detection.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
-@Table(name="scams")
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "Scams")
 public class Scam {
-    @Id
-    private Integer scamId;
 
-    private String lostResource;
-    private LocalDateTime time;
-    
-    @ManyToOne
-    @JoinColumn(name = "scammer_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long scamId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "scammerId")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
     private Scammer scammer;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
     private User user;
+
+    private String lostResource;
+
+    private LocalDateTime time;
 }
+
+
+

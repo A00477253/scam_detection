@@ -1,35 +1,31 @@
 package com.example.scam_detection.entity;
 
-import java.util.Set;
+import jakarta.persistence.*;
+import lombok.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Scammer {
-    @Id
-    private Integer scammerId;
 
-    private String email;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "scammerId")
+    private Long scammerId;
+
+    @Column(name = "phone_number", nullable = false, length = 15)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "scammer")
-    private Set<Scam> scams;
+    @Column(name = "email")
+    private String email;
 
-    @OneToMany(mappedBy = "scammer")
-    private Set<Record> records;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "categoryId")
     private ScamCategory scamCategory;
-
 }
+
+

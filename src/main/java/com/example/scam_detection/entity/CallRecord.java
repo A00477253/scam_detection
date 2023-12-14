@@ -1,28 +1,35 @@
 package com.example.scam_detection.entity;
 
-import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import lombok.*;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.sql.Timestamp;
 
-@Data
+
 @Entity
-@NoArgsConstructor
+@Table(name = "Call_record")
+@Getter
+@Setter
+@ToString
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
+
 public class CallRecord {
+
     @EmbeddedId
     private CallRecordId id;
 
-    private LocalDateTime duration;
+    @Column(name = "duration")
+    private Timestamp duration;
 
-    @ManyToOne
-    @MapsId("recordId")
-    @JoinColumn(name = "record_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JoinColumn(name = "recordId", insertable = false, updatable = false)
     private Record record;
+
 }
+
+
+

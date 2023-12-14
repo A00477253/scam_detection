@@ -1,27 +1,32 @@
 package com.example.scam_detection.entity;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import lombok.*;
+
 
 @Entity
-@Data
-@AllArgsConstructor
+@Table(name = "Email_record")
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
 public class EmailRecord {
+
     @EmbeddedId
+    @Column(name = "record_id")
     private EmailRecordId id;
 
-    // TODO: increase varchar size to 255
+    @Column(name = "content", length = 255)
     private String content;
 
     @ManyToOne
-    @MapsId("recordId")
-    @JoinColumn(name = "record_id")
+    @JoinColumn(name = "recordId", insertable = false, updatable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
     private Record record;
+
 }
+

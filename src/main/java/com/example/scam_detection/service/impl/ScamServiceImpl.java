@@ -19,4 +19,6 @@ public class ScamServiceImpl implements ScamService {
     public List<Scam> getScams(){
         return scamRepository.findAll();
     }
+
+
 }

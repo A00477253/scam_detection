@@ -1,10 +1,10 @@
 package com.example.scam_detection.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.example.scam_detection.entity.EmailRecord;
 import com.example.scam_detection.entity.EmailRecordId;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface EmailRecordRepository extends JpaRepository<EmailRecord, EmailRecordId>{
-    
+@Repository
+public interface EmailRecordRepository extends JpaRepository<EmailRecord, EmailRecordId> {
 }
