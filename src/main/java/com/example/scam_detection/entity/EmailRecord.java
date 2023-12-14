@@ -19,7 +19,7 @@ public class EmailRecord {
     @Column(name = "record_id")
     private EmailRecordId id;
 
-    @Column(name = "content", length = 50)
+    @Column(name = "content", length = 255)
     private String content;
 
     @ManyToOne

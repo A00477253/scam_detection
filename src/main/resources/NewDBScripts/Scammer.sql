@@ -1,4 +1,4 @@
-INSERT INTO Scammer (scammer_id, email, phone_number, category_id) VALUES 
+INSERT INTO scammer (scammer_id, email, phone_number, category_id) VALUES
 (1, 'scammer1@example.com', '+111222333', 1),
 (2, 'scammer2@example.com', '+444555666', 2),
 (3, 'scammer3@example.com', '+777888999', 3),

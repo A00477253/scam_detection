@@ -1,4 +1,4 @@
-INSERT INTO ScamCategory (category_id, description, type) VALUES 
+INSERT INTO scam_category (category_id, description, type) VALUES
 (1, 'Money Scam', 'Type 1'),
 (2, 'Identity Theft', 'Type 2'),
 (3, 'Investment Fraud', 'Type 3'),
