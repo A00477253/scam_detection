@@ -1,9 +1,7 @@
 package com.example.scam_detection.controller;
 
 import com.example.scam_detection.entity.Scam;
-import com.example.scam_detection.model.AgeDTO;
-import com.example.scam_detection.model.AgeGroupDTO;
-import com.example.scam_detection.model.RecordDTO;
+import com.example.scam_detection.model.*;
 import com.example.scam_detection.service.RecordService;
 import com.example.scam_detection.service.ScamService;
 import jakarta.transaction.Transactional;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/scam")
@@ -45,12 +44,18 @@ public class ScamController {
 
     @GetMapping("/all")
     public List<Scam> getScams(){
-        return scamService.getScams();
+
+        List<Scam> scamList= scamService.getScams();
+       // return scamList.stream().map(Scam::toDto).collect(Collectors.toList());
+        return scamList;
+
     }
 
-    @GetMapping("/scamStats")
-    public Map<String, Integer> getScamCounts(@RequestBody  AgeGroupDTO ageGroupDTO){
+    @PostMapping("/scamStats")
+    public TypeDto getScamCounts(@RequestBody AgeGroupDTO ageGroupDTO){
         System.out.println(ageGroupDTO);
-        return recordService.getScamStats(ageGroupDTO);
+        TypeDto typeDto=recordService.getScamStats(ageGroupDTO);
+        System.out.println(typeDto);
+        return typeDto;
     }
 }

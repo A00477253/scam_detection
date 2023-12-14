@@ -6,6 +6,7 @@ import com.example.scam_detection.entity.Record;
 import com.example.scam_detection.model.AgeDTO;
 import com.example.scam_detection.model.AgeGroupDTO;
 import com.example.scam_detection.model.RecordDTO;
+import com.example.scam_detection.model.TypeDto;
 import com.example.scam_detection.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -95,14 +96,13 @@ public class RecordService {
         return userRepository.findAgeAndRecordCount();
     }
 
-    public Map<String,Integer> getScamStats(AgeGroupDTO ageGroupDTO){
+    public TypeDto getScamStats(AgeGroupDTO ageGroupDTO){
         int emailCount = getEmailScamCount(ageGroupDTO);
         int phoneCount = getPhoneScamCount(ageGroupDTO);
-        Map<String, Integer> result = new HashMap<>();
-        result.put("email", emailCount);
-        result.put("phone", phoneCount);
+        TypeDto typeDto=new TypeDto(emailCount,phoneCount);
 
-        return result;
+
+        return typeDto;
     }
 
     private int getPhoneScamCount(AgeGroupDTO ageGroupDTO) {
